@@ -14,21 +14,28 @@ import com.compasso.cars.model.Car;
 
 
 @RestController
-@RequestMapping ("/api")
+@RequestMapping("/api")
 public class CarsController 
 {
 
-	Car car1 = new Car("9BBNSZPPA288003333", "New Fiesta", "ford", "branco", new BigDecimal("28.100"), 2015);
-		
+	//esse deu certo 100%
+	/*@RequestMapping ("/cars")
 	public List<CarDto> lista()
 	{
+		Car car1 = new Car("9BBNSZPPA288003333", "New Fiesta", "ford", "branco", new BigDecimal("28.100"), 2015);
 		
+		return CarDto.converter(Arrays.asList(car1, car1, car1));
+	}*/
+
+	@RequestMapping ("/cars")
+	public List<CarDto> lista(String nomeCarro)
+	{
+		Car car1 = new Car("9BBNSZPPA288003333", "New Fiesta", "ford", "branco", new BigDecimal("28.100"), 2015);
 		
 		return CarDto.converter(Arrays.asList(car1, car1, car1));
 	}
-	public String hello() {
-		return "Hello World!";
-	}
+
+
 	
 /*	public List<Car> lista(String nomeCarro) {
 	if (nomeCarro == null) {
