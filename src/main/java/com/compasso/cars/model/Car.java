@@ -17,23 +17,22 @@ public class Car {
 	private String marca;
 	private String cor;
 	private BigDecimal valor;
-	private int data;
+	private int anoFabricacao;
 	
-	/*public Car()
-	{
-		//esse construtor só serve pra não jogar nenhma exception na tela do cliente
-	}*/
 	
-	/*public Car (String chassi, String nome, String marca, String cor, BigDecimal valor, int data)
-	{
+	
+	public Car() {
+	}
+
+	public Car(String chassi, String nome, String marca, String cor, BigDecimal valor, int anoFabricacao) {
 		this.chassi = chassi;
 		this.nome = nome;
 		this.marca = marca;
 		this.cor = cor;
 		this.valor = valor;
-		this.data = data;
-	}*/
-	
+		this.anoFabricacao = anoFabricacao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -89,11 +88,11 @@ public class Car {
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-	public int getData() {
-		return data;
+	public int getAnoFabricacao() {
+		return anoFabricacao;
 	}
-	public void setData(int data) {
-		this.data = data;
+	public void setFabricacao(int ano) {
+		this.anoFabricacao = ano;
 	}
 
 

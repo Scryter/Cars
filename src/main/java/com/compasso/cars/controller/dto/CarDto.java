@@ -15,7 +15,7 @@ public class CarDto {
 	private String marca;
 	private String cor;
 	private BigDecimal valor;
-	private int data;
+	private int anoFabricacao;
 	
 	public CarDto(Car car)
 	{
@@ -24,7 +24,7 @@ public class CarDto {
 		this.marca = car.getMarca();
 		this.cor = car.getCor();
 		this.valor = car.getValor();
-		this.data = car.getData();
+		this.anoFabricacao = car.getAnoFabricacao();
 	}
 	
 	
@@ -59,8 +59,8 @@ public class CarDto {
 
 
 
-	public int getData() {
-		return data;
+	public int getAnoFabricacao() {
+		return anoFabricacao;
 	}
 
 
