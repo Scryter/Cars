@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class Car {
 
-	@Id @GeneratedValue(generator = "uuid")
+	@Id //@GeneratedValue(generator = "uuid")
 	private String chassi;
 	private String nome;
 	private String marca;
@@ -19,12 +19,12 @@ public class Car {
 	private BigDecimal valor;
 	private int data;
 	
-	public Car()
+	/*public Car()
 	{
-		
-	}
+		//esse construtor só serve pra não jogar nenhma exception na tela do cliente
+	}*/
 	
-	public Car (String chassi, String nome, String marca, String cor, BigDecimal valor, int data)
+	/*public Car (String chassi, String nome, String marca, String cor, BigDecimal valor, int data)
 	{
 		this.chassi = chassi;
 		this.nome = nome;
@@ -32,7 +32,7 @@ public class Car {
 		this.cor = cor;
 		this.valor = valor;
 		this.data = data;
-	}
+	}*/
 	
 	@Override
 	public int hashCode() {
