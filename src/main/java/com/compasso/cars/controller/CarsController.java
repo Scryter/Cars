@@ -58,7 +58,7 @@ public class CarsController
 		carRepository.save(car);
 		
 		
-		URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(car.getChassi()).toUri();
+		URI uri = uriBuilder.path("/api/cars/{id}").buildAndExpand(car.getChassi()).toUri();
 		return ResponseEntity.created(uri).body(new CarDto(car));
 	}
 }

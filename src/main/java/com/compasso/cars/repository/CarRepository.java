@@ -9,5 +9,9 @@ import com.compasso.cars.model.Car;
 public interface CarRepository extends JpaRepository<Car, String>{
 
 	List<Car> findByNome(String nomeCarro);
+	
+	List<Car> findByMarca(String marca);
+	
+	List<Car> findByCor(String cor);
 
 }
