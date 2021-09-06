@@ -2,8 +2,8 @@ package com.compasso.cars.config.filtro;
 
 public enum ByOrder {
 
-	Marca,
 	Nome,
-	Cor,
+	Valor,
+	AnoFabricacao,
 	Desativado
 }

@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.compasso.cars.config.filtro.Filter;
 import com.compasso.cars.controller.dto.CarDto;
 import com.compasso.cars.controller.form.CarForm;
 import com.compasso.cars.model.Car;
 import com.compasso.cars.repository.CarRepository;
+
 
 
 @RestController
@@ -29,7 +31,7 @@ public class CarsController
 	@Autowired
 	private CarRepository carRepository;
 
-	@GetMapping//@RequestMapping ("/cars")
+	/*@GetMapping//@RequestMapping ("/cars")
 	public List<CarDto> lista(String nomeCarro)
 	{
 		List<Car> cars;
@@ -39,18 +41,25 @@ public class CarsController
 		else	
 			cars = carRepository.findByNome(nomeCarro);		
 		return CarDto.converter(cars);
-	}
-	
-	//=====================================
-	/*@GetMapping
-	public ResponseEntity getThings(@RequestParam("filter") String[] filters) 
-	{
-		
-	    return ResponseEntity.ok(filters);
 	}*/
 	
+	//=====================================
+    @GetMapping
+    public ResponseEntity<?> completeFilter(
+            @RequestParam(name="filtro", required = false) String filtro,
+            @RequestParam(name="ordem", required = false) String ordem,
+            @RequestParam(name="valor", required = false) String valor
+    )
+    {
+        List<Car> cars = new Filter(filtro, ordem, valor, carRepository).getResults();
+
+        if(cars.size() == 0) return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(cars);
+    }
 	
-	//======================================
+	
+	//=========================================
 	@PostMapping
 	public ResponseEntity <CarDto> cadastrar(@RequestBody @Valid CarForm form, UriComponentsBuilder uriBuilder)
 	{

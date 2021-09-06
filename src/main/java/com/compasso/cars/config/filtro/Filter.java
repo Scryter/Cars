@@ -1,5 +1,7 @@
 package com.compasso.cars.config.filtro;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.compasso.cars.model.Car;
@@ -62,4 +64,35 @@ public class Filter {
     	}
     	return carrosFiltrados;
     }
+    
+    public List<Car> getResults()
+    {
+    	return this.OrderList(this.MetodoBusca());
+    }
+    
+    private List<Car> OrderList(List<Car> filteredCarList){
+        switch (ordem) 
+        {
+            case Desativado:
+                break;
+            case AnoFabricacao:
+            	Collections.sort(filteredCarList, (car, otherCar) -> 
+                {
+                	if (car.getAnoFabricacao() > otherCar.getAnoFabricacao())
+                		return -1;
+                	if (car.getAnoFabricacao() < otherCar.getAnoFabricacao())
+                		return 1;
+                	return 0;
+                });
+                break;
+            case Nome:
+                Collections.sort(filteredCarList, Comparator.comparing(Car::getNome));
+                break;
+            case Valor:
+                Collections.sort(filteredCarList, Comparator.comparing(Car::getValor));
+                break;
+        }
+        return filteredCarList;
+    }
+
 }
